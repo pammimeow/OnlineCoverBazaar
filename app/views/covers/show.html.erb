@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cover.name %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @cover.desc %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @cover.price %>
+</p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @cover.device %>
+</p>
+
+<%= link_to 'Edit', edit_cover_path(@cover) %> |
+<%= link_to 'Back', covers_path %>

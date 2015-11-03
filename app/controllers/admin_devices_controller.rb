@@ -1,0 +1,3 @@
+class AdminDevicesController < ApplicationController
+	
+end

@@ -1,0 +1,65 @@
+
+			<div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                   <div class="x_title">
+                       <h2>Add New Device </h2>
+                        <%= params[:action] %>                                 
+                        <div class="clearfix"></div>
+                   </div>
+					<div class="x_content">
+                        <% if(notice.present?) %>
+                            <p class = "notice"><%= notice %></p>
+                        <% end %>
+                        <% if(alert.present?) %>
+                            <p><h2  class = "errornotice"><%= alert %></h2></p>
+                        <% end %>
+
+				        <%= render 'form'  %>
+         			</div>
+				</div>
+			  </div>
+
+							<div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>All Devices </h2>                                   
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Device Name</th>
+                                                <th>Vendor</th>
+                                                <th>Options</th>
+                                            </tr>
+                                        </thead>
+                                <tbody>
+                                    <% 
+                                        @allDevices = Device.all
+                                        @allDevices.each do |device|
+                                     %>
+                                          <tr>
+                                            <td scope="row"><%= device.id %></td>
+                                            <td><%= device.name %></td>
+                                            <td><%= device.vendor %></td>
+                                           
+                                            <td>
+                           
+                            <%= link_to 'Edit', edit_device_path(device), :class => "btn btn-info btn-xs" %>
+                            <%= link_to 'Delete', device, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs" %>
+                            
+                                            </td>                         
+                                          </tr>
+                                     <% end %>
+                                </tbody>   
+                                       
+                            </table>
+
+                        </div>
+                     </div>
+                 </div>
+
+                     
+			

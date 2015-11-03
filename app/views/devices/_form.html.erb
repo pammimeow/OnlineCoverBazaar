@@ -1,0 +1,28 @@
+<%= form_for @device, :url => (@device.new_record? ? devices_path : device_path(@device.id)),
+                         html: {class: ""} do |f| %>
+                             <div class="form-group">
+                                <label for="ex3">Device Name</label>
+                                <%= f.text_field :name , class: 'form-control'%>
+                                <div class = "error">
+                                    <%= 
+                                       if(@device.errors[:name].present?)
+                                            @device.errors[:name][0].capitalize
+                                        end
+                                    %>
+                                </div>
+                             </div>
+                            <div class="form-group">
+                                <label for="ex4">Vendor</label>
+                                <%= f.select :vendor,
+                                [
+                                    ['Android', 'android'], 
+                                    ['IOS', 'ios'], 
+                                    ['Windows', 'windows'],
+                                    ['Other', 'other']
+                                ],
+                                {},
+                                { :class => 'form-control' }
+                                 %>                                  
+                            </div>
+                              <%= f.submit "Create", class: 'btn btn-success' %>
+<% end %>         

@@ -1,0 +1,47 @@
+<%= form_for(@cover, :html => {:multipart => true}) do |f| %>
+  <% 
+    @cover_images = @cover.cover_images 
+  %>
+  <% if @cover.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cover.errors.count, "error") %> prohibited this cover from being saved:</h2>
+
+      <ul>
+      <% @cover.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :desc %><br>
+    <%= f.text_area :desc %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class = "field">
+     Cover Images <br>
+     <div>
+
+     </div>
+     <%= f.file_field :images, :multiple => true %>
+  </div>
+  <div class="field">
+    <%= f.label :device %><br>
+    <%= f.select(:device, @devices.collect {|a| [a.name, a.id]}) -%>   
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+
